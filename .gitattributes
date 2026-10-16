@@ -1,0 +1,10 @@
+# Sitio estático: normalizar a LF en el repositorio y en el checkout.
+# Evita que un archivo se vea como "modificado" solo por los finales de línea
+# al pasar de Windows (desarrollo) a Linux (GitHub Pages).
+* text=auto eol=lf
+
+# Binarios que no deben tocarse
+*.png binary
+*.jpg text=auto
+*.jpeg text=auto
+*.webp binary

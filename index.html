@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mauro Spagnoli · Desarrollo Android y backend</title>
+  <meta name="description" content="Portfolio de Mauro Spagnoli: apps Android con Kotlin y Jetpack Compose, y backends con Spring Boot y Ktor. Proyectos con tests, integración continua y documentación.">
+  <meta name="theme-color" content="#0b1020">
+
+  <link rel="canonical" href="https://maurospagnoli.github.io/">
+  <link rel="alternate" hreflang="es" href="https://maurospagnoli.github.io/">
+  <link rel="alternate" hreflang="en" href="https://maurospagnoli.github.io/en/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="Mauro Spagnoli · Desarrollo Android y backend">
+  <meta property="og:description" content="Apps Android con Kotlin y Jetpack Compose, y backends con Spring Boot y Ktor.">
+  <meta property="og:url" content="https://maurospagnoli.github.io/">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css?v=6">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/img/favicon.svg" alt="" width="24" height="24">
+        Mauro Spagnoli
+      </a>
+
+      <nav class="site-nav" aria-label="Principal">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-tools">
+        <div class="lang-switcher" role="group" aria-label="Idioma">
+          <a href="index.html" hreflang="es" lang="es" data-set-lang="es" aria-current="true">ES</a>
+          <a href="en/index.html" hreflang="en" lang="en" data-set-lang="en">EN</a>
+        </div>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
+                aria-label="Cambiar a tema claro"
+                data-label-light="Cambiar a tema claro" data-label-dark="Cambiar a tema oscuro">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="lang-hint" data-lang-hint="en" hidden>
+    <div class="container">
+      <span>This site is also available in
+        <a href="en/index.html" hreflang="en" lang="en" data-set-lang="en">English</a>.</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Desarrollo Android &amp; Backend</span>
+          <h1>Mauro Spagnoli</h1>
+          <p class="lead">
+            Construyo apps móviles y servicios backend obsesionados con la corrección de los datos:
+            dinero exacto, funcionamiento sin conexión y contratos de API claros.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
+            <a class="btn" href="https://github.com/MauroSpagnoli" rel="me noopener" target="_blank">GitHub ↗</a>
+          </div>
+        </div>
+        <aside class="card-panel" aria-label="Resumen">
+          <h2>En resumen</h2>
+          <ul class="summary-list">
+            <li>Dos proyectos full-stack, de la UI al despliegue.</li>
+            <li>Tests, integración continua y documentación en todos ellos.</li>
+            <li>Este portfolio está hecho a mano con HTML y CSS, sin build.</li>
+          </ul>
+          <ul class="stack-list">
+            <li class="pill">Kotlin</li>
+            <li class="pill">Jetpack Compose</li>
+            <li class="pill">Spring Boot</li>
+            <li class="pill">Ktor</li>
+            <li class="pill">PostgreSQL</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ Proyectos ============ -->
+    <section id="proyectos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Proyectos</h2>
+          <p>Dos proyectos donde aplico lo mismo: dominio bien separado, dinero en enteros y calidad automatizada.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <span class="kind">Full-stack · Android + API</span>
+            <h3>CuentasClaras</h3>
+            <p class="tagline">App de gastos compartidos: grupos, reparto flexible, balances y liquidación con el mínimo número de transferencias.</p>
+            <ul>
+              <li>Cliente Android <strong>offline-first</strong>: escritura optimista, tabla <span class="mono">outbox</span> y <span class="mono">SyncWorker</span> con reintentos idempotentes.</li>
+              <li>API <strong>Spring Boot</strong> con JWT (refresh rotativo), Flyway, <span class="mono">openapi.yaml</span> como contrato y tests con Testcontainers.</li>
+              <li><strong>Algoritmo de liquidación</strong> (exacto y heurístico) con el dinero siempre en enteros.</li>
+            </ul>
+            <ul class="stack-list">
+              <li class="pill">Kotlin</li>
+              <li class="pill">Compose</li>
+              <li class="pill">Hilt</li>
+              <li class="pill">Room</li>
+              <li class="pill">WorkManager</li>
+              <li class="pill">Spring Boot</li>
+              <li class="pill">PostgreSQL</li>
+              <li class="pill">OpenAPI</li>
+            </ul>
+            <div class="spacer"></div>
+            <div class="links">
+              <a class="btn" href="https://github.com/MauroSpagnoli/cuentas-claras" target="_blank" rel="noopener">Código en GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="kind">Android</span>
+            <h3>TodoList</h3>
+            <p class="tagline">App de tareas con Clean Architecture, Room y una interfaz Compose que reacciona al instante.</p>
+            <ul>
+              <li>Tres capas (<strong>dominio, datos, UI</strong>) con casos de uso e inyección con Hilt.</li>
+              <li>Estado reactivo con <strong>Flow/StateFlow</strong> y persistencia local con Room.</li>
+              <li>Integración continua con <strong>Detekt</strong> y publicación de APK firmado.</li>
+            </ul>
+            <ul class="stack-list">
+              <li class="pill">Kotlin</li>
+              <li class="pill">Compose</li>
+              <li class="pill">Hilt</li>
+              <li class="pill">Room</li>
+              <li class="pill">Flow</li>
+              <li class="pill">GitHub Actions</li>
+            </ul>
+            <div class="spacer"></div>
+            <div class="links">
+              <a class="btn" href="https://github.com/MauroSpagnoli/todolist" target="_blank" rel="noopener">Código en GitHub ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Sobre mí ============ -->
+    <section id="sobre-mi">
+      <div class="container">
+        <div class="section-head">
+          <h2>Sobre mí</h2>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p>
+              Trabajo donde se encuentran el móvil y el backend: apps Android con Jetpack Compose y
+              APIs en Spring Boot o Ktor. Me interesan los problemas en los que la corrección
+              importa —dinero, permisos, sincronización— y dejo cada proyecto con tests,
+              integración continua y documentación.
+            </p>
+            <p class="muted">
+              Antes de escribir código, diseño: alcance, modelo de datos y contrato de API. Se nota
+              en que los proyectos grandes de este portfolio tienen su propia documentación y sus
+              decisiones registradas.
+            </p>
+          </div>
+          <div class="skills">
+            <div>
+              <h3>Móvil</h3>
+              <ul class="stack-list">
+                <li class="pill">Kotlin</li>
+                <li class="pill">Jetpack Compose</li>
+                <li class="pill">Hilt</li>
+                <li class="pill">Room</li>
+                <li class="pill">WorkManager</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Backend</h3>
+              <ul class="stack-list">
+                <li class="pill">Spring Boot</li>
+                <li class="pill">Ktor</li>
+                <li class="pill">PostgreSQL</li>
+                <li class="pill">JWT</li>
+                <li class="pill">Flyway</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Calidad</h3>
+              <ul class="stack-list">
+                <li class="pill">JUnit · MockK</li>
+                <li class="pill">Robolectric</li>
+                <li class="pill">Testcontainers</li>
+                <li class="pill">Detekt · Lint</li>
+                <li class="pill">GitHub Actions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contacto ============ -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <h2>¿Hablamos?</h2>
+        <p class="muted">El código está en GitHub. Si quieres comentar algo, escríbeme.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="mailto:maurospagnoliherrera@hotmail.com">maurospagnoliherrera@hotmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/mauro-spagnoli-herrera" target="_blank" rel="me noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/MauroSpagnoli" target="_blank" rel="me noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Mauro Spagnoli · Hecho a mano con HTML y CSS</span>
+      <a href="en/index.html" hreflang="en" lang="en" data-set-lang="en">English version</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=3" defer></script>
+</body>
+</html>
