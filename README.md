@@ -17,6 +17,7 @@ portfolio/
 ├── content/
 │   └── projects.md         # Fuente de verdad del contenido (textos ES/EN)
 ├── .nojekyll               # Evita el procesado de Jekyll en GitHub Pages
+├── .gitattributes          # Finales de línea LF (Windows ↔ Linux/GitHub Pages)
 └── README.md
 ```
 
@@ -32,7 +33,7 @@ Cualquiera de estas opciones sirve:
    ```powershell
    cd C:\Users\mauro\Documents\portfolio
    python -m http.server 5500
-   # luego abre http://localhost:8000  ->  http://localhost:8000/index.html
+   # luego abre http://localhost:5500
    ```
 
 > Con `file://` el JavaScript funciona igual, pero las rutas `canonical`/`hreflang` apuntan al
@@ -40,17 +41,15 @@ Cualquiera de estas opciones sirve:
 
 ## Publicar en GitHub Pages
 
-El sitio se sirve desde la rama `main`. Hay dos formas:
+El sitio se sirve desde la rama `main`. El **repositorio local ya está inicializado** (rama `main`,
+con el commit inicial hecho), así que solo falta conectarlo con GitHub.
 
 **A. Repositorio de usuario (recomendado por la URL elegida)**
 
-1. Crea en GitHub el repositorio **`MauroSpagnoli.github.io`** (público).
-2. Publica este contenido:
+1. Crea en GitHub el repositorio **`MauroSpagnoli.github.io`** (público y vacío, sin README).
+2. Añade el remoto y sube:
    ```powershell
    cd C:\Users\mauro\Documents\portfolio
-   git init -b main
-   git add -A
-   git commit -m "feat: portfolio estatico bilingue (landing)"
    git remote add origin https://github.com/MauroSpagnoli/MauroSpagnoli.github.io.git
    git push -u origin main
    ```
@@ -74,17 +73,20 @@ de `canonical` y `hreflang` en `index.html` y `en/index.html`.
 
 ## Caché de CSS y JS
 
-Los enlaces a `styles.css` y `main.js` llevan un sufijo de versión (`?v=1`). GitHub Pages cachea
-los estáticos, así que **al tocar el CSS o el JS hay que subir ese número** en `index.html` y en
-`en/index.html` para que los visitantes que ya habían entrado reciban la versión nueva.
+Los enlaces a `styles.css` y `main.js` llevan un sufijo de versión (`?v=N`; ahora el CSS va por
+`?v=6` y el JS por `?v=3`). GitHub Pages cachea los estáticos, así que **al tocar el CSS o el JS
+hay que subir ese número** en `index.html` y en `en/index.html` para que los visitantes que ya
+habían entrado reciban la versión nueva.
 
 ## Roadmap
+
+El **repositorio git local ya está creado** (rama `main`, commit inicial hecho); falta publicarlo (F5).
 
 | Fase | Contenido | Estado |
 |---|---|---|
 | F0 | Contenido en `content/projects.md` | ✅ **hecha** (contacto completo; falta el texto de experiencia) |
 | F1 | Portada ES/EN + estilos + favicon | ✅ **hecha** |
-| F2 | Diseño y responsive | ✅ **hecha** (Lighthouse: accesibilidad/SEO/buenas prácticas = 100) |
+| F2 | Diseño y responsive | ✅ **hecha** (Lighthouse: accesibilidad/SEO/buenas prácticas = 100 en los dos temas y los dos idiomas) |
 | F3 | Case studies: una página por proyecto (ES/EN) con capturas | ⏳ siguiente |
 | F4 | SEO (`og:image`), accesibilidad y Lighthouse | ⏳ |
 | F5 | Publicación en GitHub Pages | ⏳ |
@@ -95,3 +97,5 @@ los estáticos, así que **al tocar el CSS o el JS hay que subir ese número** e
 - **Experiencia**: falta el texto del puesto y las tareas (lo aporta Mauro).
 - Decidir si se muestran ubicación y disponibilidad.
 - Capturas de pantalla de las apps → guardar en `assets/img/` (necesarias para F3 y `og:image` en F4).
+- Decidir si se mantiene **Ktor** en el titular, en «Sobre mí» y en las pills: solo lo respaldaba
+  Split, que ya no está en el portfolio (aunque el conocimiento es real).
