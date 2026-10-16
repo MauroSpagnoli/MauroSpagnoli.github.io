@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CuentasClaras · Caso de estudio · Mauro Spagnoli</title>
+  <meta name="description" content="Caso de estudio de CuentasClaras: app Android offline-first y API Spring Boot para gastos compartidos, con dinero en enteros, reparto flexible y plan de liquidación.">
+  <meta name="theme-color" content="#0b1020">
+
+  <link rel="canonical" href="https://maurospagnoli.github.io/proyectos/cuentas-claras.html">
+  <link rel="alternate" hreflang="es" href="https://maurospagnoli.github.io/proyectos/cuentas-claras.html">
+  <link rel="alternate" hreflang="en" href="https://maurospagnoli.github.io/en/projects/cuentas-claras.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="CuentasClaras · Caso de estudio">
+  <meta property="og:description" content="App Android offline-first y API Spring Boot para gastos compartidos: dinero en enteros, reparto flexible y plan de liquidación.">
+  <meta property="og:url" content="https://maurospagnoli.github.io/proyectos/cuentas-claras.html">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/favicon.svg" alt="" width="24" height="24">
+        Mauro Spagnoli
+      </a>
+
+      <nav class="site-nav" aria-label="Principal">
+        <a href="../index.html#proyectos">Proyectos</a>
+        <a href="../index.html#sobre-mi">Sobre mí</a>
+        <a href="../index.html#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-tools">
+        <div class="lang-switcher" role="group" aria-label="Idioma">
+          <a href="cuentas-claras.html" hreflang="es" lang="es" data-set-lang="es" aria-current="true">ES</a>
+          <a href="../en/projects/cuentas-claras.html" hreflang="en" lang="en" data-set-lang="en">EN</a>
+        </div>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
+                aria-label="Cambiar a tema claro"
+                data-label-light="Cambiar a tema claro" data-label-dark="Cambiar a tema oscuro">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="lang-hint" data-lang-hint="en" hidden>
+    <div class="container">
+      <span>This case study is also available in
+        <a href="../en/projects/cuentas-claras.html" hreflang="en" lang="en" data-set-lang="en">English</a>.</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <article class="container">
+      <p class="crumbs"><a href="../index.html#proyectos">← Proyectos</a></p>
+
+      <header class="case-head">
+        <span class="kind">Full-stack · Android + API</span>
+        <h1>CuentasClaras</h1>
+        <p class="lead">
+          App de gastos compartidos: grupos, reparto flexible, balances y liquidación con el
+          mínimo número de transferencias.
+        </p>
+        <ul class="stack-list">
+          <li class="pill">Kotlin</li>
+          <li class="pill">Jetpack Compose</li>
+          <li class="pill">Hilt</li>
+          <li class="pill">Room</li>
+          <li class="pill">WorkManager</li>
+          <li class="pill">Spring Boot</li>
+          <li class="pill">PostgreSQL</li>
+          <li class="pill">Flyway</li>
+          <li class="pill">OpenAPI</li>
+          <li class="pill">Testcontainers</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="https://github.com/MauroSpagnoli/cuentas-claras" target="_blank" rel="noopener">Código en GitHub ↗</a>
+        </div>
+      </header>
+
+      <section class="case-section">
+        <h2>El problema</h2>
+        <p>
+          Repartir los gastos de un piso compartido parece trivial y no lo es. Hay que saber quién
+          pagó cada cosa, decidir si un gasto va a partes iguales, por importes exactos o por
+          porcentajes, permitir apuntar algo en el metro sin cobertura y, al cerrar el mes, cuadrar
+          las cuentas sin una ronda interminable de transferencias.
+        </p>
+        <p>
+          El enemigo silencioso son los céntimos. Casi todas las apps del sector convierten el dinero
+          a coma flotante, y entonces 10 € entre 3 deja de sumar 10 €. Aquí, si las cuentas no
+          cuadran al céntimo, la app está mal.
+        </p>
+      </section>
+
+      <section class="case-section">
+        <h2>Cómo lo resolví</h2>
+        <ul>
+          <li>
+            El dinero se guarda siempre en <strong>enteros (céntimos)</strong> y nunca pasa por coma
+            flotante. El reparto calcula las partes y reparte el <strong>resto céntimo a céntimo</strong>,
+            de forma que la suma de las partes es exactamente el total.
+          </li>
+          <li>
+            El cliente Android es <strong>offline-first</strong>: cada escritura se aplica primero en
+            local (Room), se encola en una tabla <span class="mono">outbox</span> y un
+            <span class="mono">SyncWorker</span> la envía al servidor. Los envíos llevan identificador
+            propio, así que repetir uno no duplica el gasto.
+          </li>
+          <li>
+            La API es un servicio <strong>Spring Boot</strong> con JWT (token de acceso y
+            <em>refresh</em> rotativo), migraciones <strong>Flyway</strong> y
+            <strong>PostgreSQL</strong>. El contrato vive en un <span class="mono">openapi.yaml</span>
+            versionado en el repositorio, y los tests de integración levantan un PostgreSQL real con
+            <strong>Testcontainers</strong>.
+          </li>
+          <li>
+            La pantalla de balances muestra el <strong>saldo neto</strong> de cada miembro y propone un
+            <strong>plan de liquidación</strong>: la lista más corta de pagos que deja todas las cuentas
+            a cero.
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Capturas</h2>
+        <p class="muted case-note">
+          La interfaz de la app está en español. Estas capturas salen de una compilación de desarrollo
+          con datos de ejemplo.
+        </p>
+        <ul class="shots">
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/cuentas-claras/login.png" alt="Pantalla de inicio de sesión de CuentasClaras, con los campos de email y contraseña y el botón Entrar." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Acceso</strong>Inicio de sesión con email y contraseña.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/cuentas-claras/grupos.png" alt="Listado de grupos con un grupo llamado Piso de Chamberí, su descripción, el número de miembros y la moneda." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Mis grupos</strong>Los grupos del usuario, con miembros y moneda.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/cuentas-claras/grupo.png" alt="Ficha del grupo con los accesos a Gastos y a Balances y la lista de miembros con su rol: propietario o miembro." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>El grupo</strong>Miembros con su rol y accesos a gastos y balances.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/cuentas-claras/gastos.png" alt="Listado de gastos del grupo, cada uno con su importe, la fecha, quién lo pagó y el tipo de reparto." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Gastos</strong>Cada gasto con importe, fecha, quién pagó y cómo se reparte.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/cuentas-claras/gasto.png" alt="Detalle del gasto Alquiler de octubre: 900 euros repartidos a partes iguales, 300 euros por cada uno de los tres miembros." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Detalle del gasto</strong>900,00 € a partes iguales: 300,00 € por cabeza.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/cuentas-claras/balances.png" alt="Pantalla de balances con el saldo neto de cada miembro y el plan de liquidación propuesto." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Balances</strong>Saldo neto por persona y plan de liquidación.</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Decisiones que sostienen el resto</h2>
+        <dl class="decisions">
+          <div>
+            <dt>Dinero en enteros, siempre</dt>
+            <dd>
+              Guardar céntimos evita los errores de redondeo. El reparto reparte el resto unidad a
+              unidad, así que la suma de las partes coincide con el total y no hay céntimos huérfanos.
+            </dd>
+          </div>
+          <div>
+            <dt>Un único contrato de API</dt>
+            <dd>
+              El <span class="mono">openapi.yaml</span> es la referencia: la app, los tests y la
+              documentación miran al mismo fichero. Si el contrato cambia, se ve en la revisión.
+            </dd>
+          </div>
+          <div>
+            <dt>La red es un detalle, no un requisito</dt>
+            <dd>
+              La interfaz nunca espera a una petición: escribe en local y responde al instante. La
+              sincronización es un proceso de fondo que se puede reintentar sin miedo.
+            </dd>
+          </div>
+          <div>
+            <dt>Reintentos idempotentes</dt>
+            <dd>
+              Cada operación encolada lleva su propio identificador. Si el envío se repite —porque
+              se perdió la respuesta—, el servidor reconoce la operación y no la duplica.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="case-section">
+        <h2>Lo que haría después</h2>
+        <ul>
+          <li>Notificaciones cuando alguien apunta un gasto en un grupo compartido.</li>
+          <li>Exportar el histórico de un grupo a CSV para quien quiera revisarlo fuera de la app.</li>
+          <li>Una segunda pasada de accesibilidad sobre las tablas de reparto, que es la pantalla con más datos por fila.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Mauro Spagnoli · Hecho a mano con HTML y CSS</span>
+      <a href="../index.html" hreflang="es" lang="es" data-set-lang="es">Volver al portfolio</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=3" defer></script>
+</body>
+</html>

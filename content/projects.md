@@ -31,13 +31,13 @@
 **ES**
 
 > Trabajo donde se encuentran el móvil y el backend: apps Android con Jetpack Compose y APIs en
-> Spring Boot o Ktor. Me interesan los problemas en los que la corrección importa —dinero,
+> Spring Boot. Me interesan los problemas en los que la corrección importa —dinero,
 > permisos, sincronización— y dejo cada proyecto con tests, integración continua y documentación.
 
 **EN**
 
-> I work where mobile meets backend: Android apps with Jetpack Compose and APIs in Spring Boot or
-> Ktor. I care about problems where correctness matters —money, permissions, synchronisation— and
+> I work where mobile meets backend: Android apps with Jetpack Compose and APIs in Spring Boot.
+> I care about problems where correctness matters —money, permissions, synchronisation— and
 > I ship every project with tests, CI and documentation.
 
 ## 2. Niveles de calidad (a revisar por ti)
@@ -54,6 +54,7 @@
 ### 3.1 CuentasClaras
 
 - **Repo:** <https://github.com/MauroSpagnoli/cuentas-claras>
+- **Caso de estudio:** `proyectos/cuentas-claras.html` (ES) · `en/projects/cuentas-claras.html` (EN)
 - **Tipo:** full-stack (Android + API)
 - **Tagline ES:** App de gastos compartidos: grupos, reparto flexible, balances y liquidación con
   el mínimo número de transferencias.
@@ -77,6 +78,7 @@
 ### 3.2 TodoList
 
 - **Repo:** <https://github.com/MauroSpagnoli/todolist>
+- **Caso de estudio:** `proyectos/todolist.html` (ES) · `en/projects/todolist.html` (EN)
 - **Tipo:** Android
 - **Tagline ES:** App de tareas con Clean Architecture, Room y una interfaz Compose que reacciona
   al instante.
@@ -105,9 +107,41 @@ crearon) y vive solo en local.
 Si algún día se publica y se completa, la vía sería un **apartado dentro del case study de
 CuentasClaras** ("el mismo dominio implementado otra vez con Ktor"), nunca una tarjeta propia.
 
-## 4. Pendientes técnicos del sitio
+## 4. Capturas (fase 3)
 
-- [ ] Fase 3: una página de caso de estudio por proyecto (ES/EN) con capturas.
-- [ ] Fase 4: `og:image`, auditoría de accesibilidad y Lighthouse.
+Todas son reales, tomadas de las apps en un emulador Android (1080×2400). Los `alt` y los pies de
+foto van escritos por idioma en cada página: el mismo juego de imágenes sirve para ES y para EN.
+
+### 4.1 CuentasClaras · `assets/img/cuentas-claras/`
+
+| Fichero | Pantalla | Qué muestra |
+|---|---|---|
+| `login.png` | Acceso | Campos de email y contraseña y botón Entrar |
+| `grupos.png` | Mis grupos | El grupo «Piso de Chamberí», con miembros y moneda |
+| `grupo.png` | El grupo | Miembros con su rol y accesos a Gastos y Balances |
+| `gastos.png` | Gastos | Cinco gastos con importe, fecha, pagador y tipo de reparto |
+| `gasto.png` | Detalle del gasto | 900,00 € a partes iguales: 300,00 € por cabeza |
+| `balances.png` | Balances | Saldo neto por persona y plan de liquidación |
+
+Datos de ejemplo usados: un grupo de piso con tres miembros (Demo, Lucía y Marcos) y cinco gastos
+entre 30,00 € y 900,00 €. Se sembraron por la API REST y se verificaron céntimo a céntimo.
+
+### 4.2 TodoList · `assets/img/todolist/`
+
+| Fichero | Pantalla | Qué muestra |
+|---|---|---|
+| `tareas.png` | La lista | Tres pendientes y dos completadas (tachadas) con su descripción |
+| `nueva-tarea.png` | Nueva tarea | El diálogo con título y descripción rellenos |
+| `menu-tarea.png` | Acciones por tarea | El menú con Editar y Eliminar |
+| `ajustes.png` | Ajustes | El selector de idioma |
+| `idioma.png` | Idioma | Español e Inglés |
+
+La interfaz se capturó en español; la app también está en inglés.
+
+## 5. Pendientes técnicos del sitio
+
+- [x] **Fase 3**: una página de caso de estudio por proyecto (ES/EN) con capturas.
+      Ver `proyectos/`, `en/projects/` y `assets/img/<proyecto>/`.
+- [ ] Fase 4: `og:image`, auditoría de accesibilidad y Lighthouse de las páginas nuevas.
 - [ ] Fase 5: publicar en GitHub Pages (`MauroSpagnoli.github.io`) y ajustar `canonical`/`hreflang`
       si el repositorio no es el de usuario (`<usuario>.github.io`).

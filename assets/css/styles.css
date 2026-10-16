@@ -195,7 +195,9 @@ section { padding: clamp(40px, 7vw, 72px) 0; }
 }
 .project:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
 .project h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-.project .kind { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); font-weight: 700; }
+.kind { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); font-weight: 700; }
+.project .kind { display: inline-block; }
+.case-head .kind { margin-bottom: 8px; }
 .project .tagline { color: var(--muted); }
 .project ul { margin: 6px 0 18px; padding-left: 1.15em; }
 .project li { margin-bottom: .35em; }
@@ -227,3 +229,39 @@ section { padding: clamp(40px, 7vw, 72px) 0; }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
+
+/* ---------- Casos de estudio ---------- */
+.crumbs { margin: 0 0 20px; font-size: .92rem; }
+.crumbs a { color: var(--muted); font-weight: 600; }
+.crumbs a:hover { color: var(--text); }
+
+.case-head { max-width: 64ch; }
+.case-head h1 { margin-bottom: .3em; }
+.case-head .lead { font-size: clamp(1.02rem, 2vw, 1.16rem); color: var(--muted); }
+.case-head .stack-list { margin-top: 20px; }
+
+.case-section { padding: 34px 0 0; }
+.case-section h2 { margin-bottom: .5em; }
+.case-section p, .case-section ul, .case-section ol, .case-section dl { max-width: 68ch; }
+.case-section li { margin-bottom: .4em; }
+.case-note { font-size: .9rem; }
+
+.shots {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  margin: 24px 0 0; padding: 0; list-style: none;
+}
+.shot { margin: 0; }
+.shot img {
+  width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); box-shadow: var(--shadow);
+}
+.shot figcaption { margin-top: 10px; font-size: .86rem; color: var(--muted); }
+.shot figcaption strong { display: block; color: var(--text); }
+
+.decisions { margin: 0; padding: 0; }
+.decisions > div { border-top: 1px solid var(--border); padding: 16px 0; }
+.decisions > div:last-child { border-bottom: 1px solid var(--border); }
+.decisions dt { font-weight: 700; margin-bottom: 3px; }
+.decisions dd { margin: 0; color: var(--muted); }

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CuentasClaras · Case study · Mauro Spagnoli</title>
+  <meta name="description" content="CuentasClaras case study: an offline-first Android app and a Spring Boot API for shared expenses, with money as integers, flexible splits and a settlement plan.">
+  <meta name="theme-color" content="#0b1020">
+
+  <link rel="canonical" href="https://maurospagnoli.github.io/en/projects/cuentas-claras.html">
+  <link rel="alternate" hreflang="es" href="https://maurospagnoli.github.io/proyectos/cuentas-claras.html">
+  <link rel="alternate" hreflang="en" href="https://maurospagnoli.github.io/en/projects/cuentas-claras.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:title" content="CuentasClaras · Case study">
+  <meta property="og:description" content="Offline-first Android app and Spring Boot API for shared expenses, with money kept as integers.">
+  <meta property="og:url" content="https://maurospagnoli.github.io/en/projects/cuentas-claras.html">
+
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/img/favicon.svg" alt="" width="24" height="24">
+        Mauro Spagnoli
+      </a>
+
+      <nav class="site-nav" aria-label="Main">
+        <a href="../../index.html#projects">Projects</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#contact">Contact</a>
+      </nav>
+
+      <div class="nav-tools">
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <a href="../../proyectos/cuentas-claras.html" hreflang="es" lang="es" data-set-lang="es">ES</a>
+          <a href="cuentas-claras.html" hreflang="en" lang="en" data-set-lang="en" aria-current="true">EN</a>
+        </div>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
+                aria-label="Switch to light theme"
+                data-label-light="Switch to light theme" data-label-dark="Switch to dark theme">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="lang-hint" data-lang-hint="es" hidden>
+    <div class="container">
+      <span>This case study is also available in
+        <a href="../../proyectos/cuentas-claras.html" hreflang="es" lang="es" data-set-lang="es">Spanish</a>.</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <article class="container">
+      <p class="crumbs"><a href="../../index.html#projects">← Projects</a></p>
+
+      <header class="case-head">
+        <span class="kind">Full-stack · Android + API</span>
+        <h1>CuentasClaras</h1>
+        <p class="lead">
+          Shared-expenses app: groups, flexible splits, balances and settlement with the minimum
+          number of transfers.
+        </p>
+        <ul class="stack-list">
+          <li class="pill">Kotlin</li>
+          <li class="pill">Jetpack Compose</li>
+          <li class="pill">Hilt</li>
+          <li class="pill">Room</li>
+          <li class="pill">WorkManager</li>
+          <li class="pill">Spring Boot</li>
+          <li class="pill">PostgreSQL</li>
+          <li class="pill">Flyway</li>
+          <li class="pill">OpenAPI</li>
+          <li class="pill">Testcontainers</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="https://github.com/MauroSpagnoli/cuentas-claras" target="_blank" rel="noopener">Code on GitHub ↗</a>
+        </div>
+      </header>
+
+      <section class="case-section">
+        <h2>The problem</h2>
+        <p>
+          Splitting a flat's expenses looks trivial and is not. You need to know who paid for what,
+          decide whether an expense is split equally, by exact amounts or by percentages, allow
+          someone to jot something down on the underground with no signal, and then close the month
+          without an endless round of transfers.
+        </p>
+        <p>
+          The silent enemy is the cent. Most apps in this space turn money into floating point, and
+          then €10 split three ways stops adding up to €10. Here, if the numbers do not add up to the
+          cent, the app is wrong.
+        </p>
+      </section>
+
+      <section class="case-section">
+        <h2>How I solved it</h2>
+        <ul>
+          <li>
+            Money is always stored as <strong>integers (cents)</strong> and never goes through
+            floating point. The split computes each share and hands out the
+            <strong>remainder one cent at a time</strong>, so the parts add up to exactly the total.
+          </li>
+          <li>
+            The Android client is <strong>offline-first</strong>: every write lands in local storage
+            first (Room), is queued in an <span class="mono">outbox</span> table and a
+            <span class="mono">SyncWorker</span> sends it to the server. Each send carries its own
+            identifier, so repeating one does not duplicate the expense.
+          </li>
+          <li>
+            The API is a <strong>Spring Boot</strong> service with JWT (access token and rotating
+            refresh), <strong>Flyway</strong> migrations and <strong>PostgreSQL</strong>. The contract
+            lives in an <span class="mono">openapi.yaml</span> versioned in the repository, and the
+            integration tests spin up a real PostgreSQL with <strong>Testcontainers</strong>.
+          </li>
+          <li>
+            The balances screen shows each member&rsquo;s <strong>net balance</strong> and proposes a
+            <strong>settlement plan</strong>: the shortest list of payments that brings every account
+            back to zero.
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Screenshots</h2>
+        <p class="muted case-note">
+          The app&rsquo;s interface is in Spanish. These shots come from a development build with
+          sample data.
+        </p>
+        <ul class="shots">
+          <li>
+            <figure class="shot">
+              <img src="../../assets/img/cuentas-claras/login.png" alt="CuentasClaras sign-in screen with the email and password fields and the Sign in button." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Sign in</strong>Email and password login.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../../assets/img/cuentas-claras/grupos.png" alt="List of groups with one called Piso de Chamberí, its description, the number of members and the currency." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>My groups</strong>Each group with its members and currency.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../../assets/img/cuentas-claras/grupo.png" alt="Group screen with entries for expenses and balances and the member list showing each role, owner or member." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>The group</strong>Members with their role, plus expenses and balances.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../../assets/img/cuentas-claras/gastos.png" alt="Group expense list, each row with its amount, date, who paid and the split type." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Expenses</strong>Amount, date, payer and split type for each one.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../../assets/img/cuentas-claras/gasto.png" alt="Detail of the expense October rent: 900 euros split equally, 300 euros each across the three members." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Expense detail</strong>€900.00 split equally: €300.00 each.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../../assets/img/cuentas-claras/balances.png" alt="Balances screen with each member's net balance and the proposed settlement plan." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Balances</strong>Net balance per person and the settlement plan.</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Decisions that hold the rest up</h2>
+        <dl class="decisions">
+          <div>
+            <dt>Money as integers, always</dt>
+            <dd>
+              Storing cents avoids rounding errors. The split hands out the remainder unit by unit, so
+              the parts add up to the total and no cent is left behind.
+            </dd>
+          </div>
+          <div>
+            <dt>A single API contract</dt>
+            <dd>
+              The <span class="mono">openapi.yaml</span> is the reference: the app, the tests and the
+              documentation all point at the same file. If the contract changes, the review shows it.
+            </dd>
+          </div>
+          <div>
+            <dt>The network is a detail, not a requirement</dt>
+            <dd>
+              The interface never waits for a request: it writes locally and answers instantly.
+              Syncing is a background job that can be retried without fear.
+            </dd>
+          </div>
+          <div>
+            <dt>Idempotent retries</dt>
+            <dd>
+              Every queued operation carries its own identifier. If a send is repeated —because the
+              response was lost— the server recognises the operation and does not duplicate it.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="case-section">
+        <h2>What I would do next</h2>
+        <ul>
+          <li>Notifications when someone adds an expense to a shared group.</li>
+          <li>Exporting a group&rsquo;s history to CSV for anyone who wants to review it outside the app.</li>
+          <li>A second accessibility pass over the split tables, which is the densest screen per row.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Mauro Spagnoli · Hand-made with HTML and CSS</span>
+      <a href="../../index.html" hreflang="en" lang="en" data-set-lang="en">Back to the portfolio</a>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js?v=3" defer></script>
+</body>
+</html>

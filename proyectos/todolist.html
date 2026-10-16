@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TodoList · Caso de estudio · Mauro Spagnoli</title>
+  <meta name="description" content="Caso de estudio de TodoList: app Android de tareas con Clean Architecture, Room, casos de uso con dispatcher inyectado, Compose en español e inglés y CI con Detekt.">
+  <meta name="theme-color" content="#0b1020">
+
+  <link rel="canonical" href="https://maurospagnoli.github.io/proyectos/todolist.html">
+  <link rel="alternate" hreflang="es" href="https://maurospagnoli.github.io/proyectos/todolist.html">
+  <link rel="alternate" hreflang="en" href="https://maurospagnoli.github.io/en/projects/todolist.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="TodoList · Caso de estudio">
+  <meta property="og:description" content="App Android de tareas con Clean Architecture, Room, Hilt y Compose, en español e inglés, con integración continua.">
+  <meta property="og:url" content="https://maurospagnoli.github.io/proyectos/todolist.html">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/favicon.svg" alt="" width="24" height="24">
+        Mauro Spagnoli
+      </a>
+
+      <nav class="site-nav" aria-label="Principal">
+        <a href="../index.html#proyectos">Proyectos</a>
+        <a href="../index.html#sobre-mi">Sobre mí</a>
+        <a href="../index.html#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-tools">
+        <div class="lang-switcher" role="group" aria-label="Idioma">
+          <a href="todolist.html" hreflang="es" lang="es" data-set-lang="es" aria-current="true">ES</a>
+          <a href="../en/projects/todolist.html" hreflang="en" lang="en" data-set-lang="en">EN</a>
+        </div>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
+                aria-label="Cambiar a tema claro"
+                data-label-light="Cambiar a tema claro" data-label-dark="Cambiar a tema oscuro">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="lang-hint" data-lang-hint="en" hidden>
+    <div class="container">
+      <span>This case study is also available in
+        <a href="../en/projects/todolist.html" hreflang="en" lang="en" data-set-lang="en">English</a>.</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <article class="container">
+      <p class="crumbs"><a href="../index.html#proyectos">← Proyectos</a></p>
+
+      <header class="case-head">
+        <span class="kind">Android</span>
+        <h1>TodoList</h1>
+        <p class="lead">
+          App de tareas con Clean Architecture, Room y una interfaz Compose que reacciona al
+          instante, disponible en español e inglés.
+        </p>
+        <ul class="stack-list">
+          <li class="pill">Kotlin</li>
+          <li class="pill">Jetpack Compose</li>
+          <li class="pill">Hilt</li>
+          <li class="pill">Room</li>
+          <li class="pill">Flow</li>
+          <li class="pill">JUnit · MockK</li>
+          <li class="pill">Robolectric</li>
+          <li class="pill">Detekt</li>
+          <li class="pill">GitHub Actions</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="https://github.com/MauroSpagnoli/todolist" target="_blank" rel="noopener">Código en GitHub ↗</a>
+        </div>
+      </header>
+
+      <section class="case-section">
+        <h2>El problema</h2>
+        <p>
+          Una lista de tareas es el ejercicio de ejemplo de casi cualquier tutorial, y por eso mismo
+          es un buen sitio para lo contrario: para enseñar cómo se construye una app pequeña que se
+          pueda mantener y probar. Las decisiones interesantes no están en la pantalla —dos listas y
+          un diálogo—, sino en dónde vive cada cosa.
+        </p>
+        <p>
+          ¿Quién decide qué es una tarea? ¿Cómo se guarda? ¿Cómo se prueba un caso de uso que
+          escribe en disco sin esperar a un hilo real? ¿Y cómo se cambia de idioma sin reiniciar la
+          app a mano?
+        </p>
+      </section>
+
+      <section class="case-section">
+        <h2>Cómo lo resolví</h2>
+        <ul>
+          <li>
+            Tres capas (<strong>dominio, datos, UI</strong>) con las dependencias en una sola
+            dirección: la UI no conoce Room y el dominio no conoce a nadie. Cada capa tiene su propio
+            modelo, y los mapeos viven en la frontera.
+          </li>
+          <li>
+            Los <strong>casos de uso</strong> reciben el <span class="mono">CoroutineDispatcher</span>
+            por inyección y devuelven un <span class="mono">Job</span>. En producción reciben el
+            dispatcher de E/S; en los tests, un <span class="mono">TestDispatcher</span>. Por eso los
+            tests son deterministas y no hay esperas reales.
+          </li>
+          <li>
+            Persistencia local con <strong>Room</strong> (tabla <span class="mono">todos</span>,
+            versión 1, esquema exportado al repositorio) y el grafo de dependencias con
+            <strong>Hilt</strong>.
+          </li>
+          <li>
+            Interfaz con <strong>Jetpack Compose</strong>: sección de pendientes y de completados,
+            diálogo de alta y edición, menú por tarea (editar y eliminar) y tachado al completar.
+          </li>
+          <li>
+            <strong>Español e inglés</strong> de verdad, con recursos por idioma. La preferencia se
+            guarda en <span class="mono">SharedPreferences</span> y el <span class="mono">Locale</span>
+            se aplica en <span class="mono">attachBaseContext</span>, antes de componer, así que no hay
+            parpadeo de idioma al abrir.
+          </li>
+          <li>
+            Calidad automatizada: <strong>JUnit + MockK</strong> en los tests unitarios,
+            <strong>Robolectric</strong> para los de interfaz, y <strong>Detekt</strong> + Android Lint.
+            Cada push a <span class="mono">main</span> compila y publica un APK firmado como release.
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Capturas</h2>
+        <p class="muted case-note">
+          La interfaz se capturó en español; la app también está disponible en inglés. Los datos son
+          de ejemplo.
+        </p>
+        <ul class="shots">
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/todolist/tareas.png" alt="Lista de tareas con tres pendientes y dos completadas, cada una con su título y su descripción; las completadas aparecen tachadas." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>La lista</strong>Pendientes y completados, cada uno con su descripción.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/todolist/nueva-tarea.png" alt="Diálogo de nueva tarea con el campo de título y el de descripción rellenos y los botones Cancelar y Agregar." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Nueva tarea</strong>Título y descripción, con un ejemplo de edición.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/todolist/menu-tarea.png" alt="Menú de una tarea con las dos acciones, Editar y Eliminar." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Acciones por tarea</strong>Editar y eliminar desde el propio elemento.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/todolist/ajustes.png" alt="Pantalla de ajustes con la fila del idioma actual, Español." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Ajustes</strong>La opción de idioma, junto al resto de preferencias.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="shot">
+              <img src="../assets/img/todolist/idioma.png" alt="Selector de idioma con las dos opciones, Español e Inglés." width="1080" height="2400" loading="lazy">
+              <figcaption><strong>Idioma</strong>La app se ofrece en español y en inglés.</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Decisiones que sostienen el resto</h2>
+        <dl class="decisions">
+          <div>
+            <dt>Tres capas y una sola dirección</dt>
+            <dd>
+              Cada capa tiene su modelo. La UI no ve entidades de base de datos y el dominio no ve
+              ninguna librería de Android. Cambiar Room por otra cosa no tocaría la lógica.
+            </dd>
+          </div>
+          <div>
+            <dt>El hilo se inyecta, no se elige</dt>
+            <dd>
+              Ningún caso de uso decide en qué hilo corre: lo recibe. Los tests meten un dispatcher
+              controlado y comprueban el resultado sin dormir el proceso.
+            </dd>
+          </div>
+          <div>
+            <dt>El idioma se fija antes de componer</dt>
+            <dd>
+              El <span class="mono">Locale</span> guardado se aplica en <span class="mono">attachBaseContext</span>,
+              de modo que la primera pantalla ya sale en el idioma correcto, sin recargarse.
+            </dd>
+          </div>
+          <div>
+            <dt>La integración continua compila, analiza y publica</dt>
+            <dd>
+              Cada push a <span class="mono">main</span> pasa Detekt, compila la versión de release y
+              firma el APK. El análisis estático es una puerta, no un aviso.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="case-section">
+        <h2>Lo que mejoraría</h2>
+        <ul>
+          <li>
+            El botón «+» de la sección «Completados» crea la tarea como pendiente: el estado se deduce
+            del primer elemento de la lista (<span class="mono">items.firstOrNull()?.completed</span>)
+            en lugar de la sección. Con la sección vacía no hay elemento del que deducirlo, así que
+            cae en pendiente. Lo suyo es que el encabezado reciba su propio estado.
+          </li>
+          <li>
+            Las etiquetas de accesibilidad del menú inferior están escritas en la vista y no salen de
+            los recursos de cadena, así que el cambio de idioma no las cubre. Es un arreglo pequeño
+            con mucha ganancia.
+          </li>
+          <li>
+            Y dos funciones que echo de menos: un buscador y reordenar las tareas arrastrando.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Mauro Spagnoli · Hecho a mano con HTML y CSS</span>
+      <a href="../index.html" hreflang="es" lang="es" data-set-lang="es">Volver al portfolio</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=3" defer></script>
+</body>
+</html>
