@@ -12,7 +12,8 @@
 | GitHub | https://github.com/MauroSpagnoli | ✅ |
 | Email | maurospagnoliherrera@hotmail.com | ✅ |
 | LinkedIn | https://www.linkedin.com/in/mauro-spagnoli-herrera | ✅ |
-| Ubicación | — | pendiente (opcional) |
+| Ubicación | Toledo, España | ✅ (solo ubicación; sin disponibilidad) |
+| Teléfono | 661 172 235 | ❌ no se publica (dato personal) |
 | CV descargable (PDF) | — | opcional (fase 6) |
 | Dominio | `https://maurospagnoli.github.io/` (asumido) | a confirmar según el nombre del repo |
 
@@ -30,24 +31,98 @@
 
 **ES**
 
-> Trabajo donde se encuentran el móvil y el backend: apps Android con Jetpack Compose y APIs en
-> Spring Boot. Me interesan los problemas en los que la corrección importa —dinero,
-> permisos, sincronización— y dejo cada proyecto con tests, integración continua y documentación.
+> Llevo escribiendo software desde 2018. Empecé como becario en Avanade y hoy trabajo en **pagos
+> online** en Worldline, donde desarrollo aplicaciones en C#, Java y Android sobre las plataformas
+> de Ingenico. Por el camino he pasado por la banca (BBVA, Crédit Agricole, Santander, CaixaBank) y
+> por la firma electrónica, donde fui desarrollador principal del proyecto de Avales Santander.
+
+> Con los años he ido hacia donde están mis proyectos propios: el móvil y los servicios. En el
+> trabajo me muevo en el ecosistema .NET y Java; en este portfolio construyo apps Android con
+> Kotlin y Jetpack Compose y APIs con Spring Boot.
+
+> Me interesan los problemas en los que la corrección importa —dinero, permisos, sincronización— y
+> dejo cada proyecto con tests, integración continua y documentación. Antes de escribir código,
+> diseño: alcance, modelo de datos y contrato de API.
 
 **EN**
 
-> I work where mobile meets backend: Android apps with Jetpack Compose and APIs in Spring Boot.
-> I care about problems where correctness matters —money, permissions, synchronisation— and
-> I ship every project with tests, CI and documentation.
+> I have been writing software since 2018. I started as an intern at Avanade and today I work on
+> **online payments** at Worldline, building C#, Java and Android applications on the Ingenico
+> platforms. Along the way I worked in banking (BBVA, Crédit Agricole, Santander, CaixaBank) and in
+> electronic signature, where I was the main developer of the Avales Santander project.
+
+> Over the years I have moved towards what my own projects are about: mobile and services. At work
+> I live in the .NET and Java ecosystems; in this portfolio I build Android apps with Kotlin and
+> Jetpack Compose and APIs with Spring Boot.
+
+> I care about problems where correctness matters —money, permissions, synchronisation— and I ship
+> every project with tests, CI and documentation. Before writing code I design: scope, data model
+> and API contract.
+
+## 2.2 Experiencia
+
+Cronología tomada del CV (`CV_Mauro_Spagnoli_2025.pdf`) y corregida por Mauro: en primeIT estuvo
+**subcontratado para Worldline** y desde **enero de 2025** trabaja **directamente** con Worldline.
+De más reciente a más antiguo. Los tres puestos de Avanade se agrupan en una sola entrada
+(becario → analista → analista sénior) para no partir la etapa.
+
+**ES**
+
+| Periodo | Puesto · Empresa | Qué hizo |
+|---|---|---|
+| Ene 2025 — actualidad | Desarrollador de software · **Worldline** | Pagos online: aplicaciones en C#, Java y Android sobre las plataformas de Ingenico. |
+| Ago 2022 — Dic 2024 | Consultor · **primeIT** | Desarrollo full-stack con tecnologías Microsoft para las aplicaciones de pago de Ingenico / Worldline, subcontratado para Worldline. |
+| Mar 2022 — Ago 2022 | Full Stack Developer · **Educabily** | Desarrollo full-stack: Angular (TypeScript) en el front y Python en el back. |
+| Jun 2019 — Mar 2022 | Analista → analista sénior · **Avanade Iberia** | Full-stack .NET para banca: BBVA, Crédit Agricole, Santander y CaixaBank. En el equipo de Firma Electrónica fui desarrollador principal del proyecto de Avales Santander (desarrollo, pruebas y despliegue en producción); .NET Core, SQL Server, Entity Framework, JWT e Identity. |
+| Oct 2018 — Jun 2019 | Becario de desarrollo · **Avanade Iberia** | Procesos de desarrollo con tecnología Microsoft. |
+
+**EN**
+
+| Period | Role · Company | What I did |
+|---|---|---|
+| Jan 2025 — present | Software developer · **Worldline** | Online payments: C#, Java and Android applications on the Ingenico platforms. |
+| Aug 2022 — Dec 2024 | Consultant · **primeIT** | Full-stack Microsoft development for the Ingenico / Worldline payment applications, subcontracted to Worldline. |
+| Mar 2022 — Aug 2022 | Full Stack Developer · **Educabily** | Full-stack: Angular (TypeScript) on the front end and Python on the back end. |
+| Jun 2019 — Mar 2022 | Analyst → Senior analyst · **Avanade Iberia** | Full-stack .NET for banking: BBVA, Crédit Agricole, Santander and CaixaBank. In the Electronic Signature team I was the main developer of the Avales Santander project (development, testing and production deployment); .NET Core, SQL Server, Entity Framework, JWT and Identity. |
+| Oct 2018 — Jun 2019 | Development intern · **Avanade Iberia** | Software development processes with Microsoft technology. |
+
+## 2.3 Formación, idiomas y certificación (del CV)
+
+**ES**
+
+| Periodo | Título · Centro |
+|---|---|
+| 2021 | Certificación AZ-900 · Microsoft (Microsoft Azure Fundamentals) |
+| 2014 — 2019 | Ingeniería de computadores · Universidad Rey Juan Carlos |
+| 2008 — 2014 | ESO y bachillerato · Colegio Mayol |
+
+- **Idiomas** (grupo «Idiomas» del bloque de skills): castellano · nativo, italiano · nativo, inglés · B2.
+
+**EN**
+
+| Period | Title · School |
+|---|---|
+| 2021 | AZ-900 certification · Microsoft (Microsoft Azure Fundamentals) |
+| 2014 — 2019 | Computer Engineering · Universidad Rey Juan Carlos |
+| 2008 — 2014 | Secondary school and sixth form · Colegio Mayol |
+
+- **Languages** (group «Languages» in the skills block): Spanish · native, Italian · native, English · B2.
+
+### Datos del CV que NO están en el sitio
+
+- **Teléfono**: 661 172 235 — no se publica (dato personal expuesto).
+- **Disponibilidad**: no se declara ninguna.
+- **Enlace** `https://validavalessantander.fnmt.es/` (trabajo en Avanade): no se enlaza.
+- **Python** (Educabily): se retiró del grupo «Trabajo» a petición de Mauro.
 
 ## 2. Niveles de calidad (a revisar por ti)
 
 - [ ] Confirmar cómo quieres presentarte (rol exacto: "Desarrollador Android", "Backend", "Full-stack"…).
-- [ ] Añadir **email** y **LinkedIn** (o decir que no se muestran).
-- [ ] Decidir si aparece **ubicación**, **disponibilidad** (p. ej. "abierto a oportunidades") y **experiencia/estudios**.
-- [ ] Validar el texto de "Sobre mí" (no inventar nada que no quieras afirmar).
-- [ ] **Experiencia**: pendiente del texto que aporte Mauro (puesto y qué hace). Cuando llegue, se
-      añade una sección propia o un apartado dentro de "Sobre mí".
+- [x] Añadir **email** y **LinkedIn** (o decir que no se muestran).
+- [x] **Ubicación**: Toledo, España (solo ubicación, sin disponibilidad). Va en la tarjeta «En resumen».
+- [x] **Formación**, **idiomas** y **certificación** (AZ-900): §2.3 (sección propia + grupo de idiomas).
+- [x] Validar el texto de "Sobre mí" (reescrito con la trayectoria real; ver §2.1).
+- [x] **Experiencia**: hecha con el CV (§2.2) y la corrección de Mauro sobre primeIT/Worldline.
 
 ## 3. Proyectos
 

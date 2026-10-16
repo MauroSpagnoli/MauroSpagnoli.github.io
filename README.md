@@ -19,6 +19,8 @@ con doble clic que servido desde GitHub Pages.
 ├── assets/
 │   ├── css/styles.css             estilos compartidos por todas las páginas
 │   ├── js/main.js                 tema claro/oscuro y aviso de idioma recordado
+│   ├── fonts/
+│   │   └── jetbrains-mono-latin.woff2  tipografía monoespaciada autoalojada (una sola variable)
 │   └── img/
 │       ├── favicon.svg
 │       ├── cuentas-claras/        capturas (login, grupos, gastos, balances…)
@@ -72,6 +74,17 @@ Si usas un repo llamado `portfolio`, la URL pasa a ser `https://maurospagnoli.gi
 Los enlaces internos siguen funcionando (son relativos), pero hay que actualizar las URLs absolutas
 de `canonical` y `hreflang` en las seis páginas.
 
+## Dirección visual
+
+Estilo **terminal / ingenieril**: monoespaciada (JetBrains Mono, autoalojada) en titulares,
+navegación, botones, etiquetas y pies de captura; sans del sistema solo para párrafos largos.
+Fondo oscuro con verde de fósforo, esquinas sin redondear (`--radius: 0`), sin sombras y
+separadores de un píxel. El tema claro se lee como una salida de impresora.
+
+Los colores viven en dos bloques de tokens al principio de `styles.css` (`:root` y
+`:root[data-theme="light"]`). `--accent-text` es el verde de texto y está ajustado para superar
+4.5:1 de contraste: si se cambia, hay que volver a medirlo.
+
 ## Cómo funciona el bilingüe
 
 - Cada idioma es **una página real**: `/` y `proyectos/*.html` en español, `/en/` y
@@ -84,19 +97,24 @@ de `canonical` y `hreflang` en las seis páginas.
 
 ## Caché de CSS y JS
 
-Los enlaces a `styles.css` y `main.js` llevan un sufijo de versión: ahora el CSS va por **`?v=7`**
+Los enlaces a `styles.css` y `main.js` llevan un sufijo de versión: ahora el CSS va por **`?v=9`**
 y el JS por **`?v=3`**. GitHub Pages cachea los estáticos, así que **al tocar el CSS o el JS hay que
 subir ese número en las seis páginas** para que quien ya había entrado reciba la versión nueva. Los
 cambios que solo tocan HTML no necesitan subir nada.
+
+La tipografía (`assets/fonts/jetbrains-mono-latin.woff2`) se sirve desde el propio sitio: se declara
+en `styles.css` con `@font-face` y `font-display: swap`. No hay peticiones a Google Fonts.
 
 ## Roadmap
 
 | Fase | Contenido | Estado |
 |---|---|---|
-| F0 | Contenido en `content/projects.md` | ✅ **hecha** (contacto completo; falta el texto de experiencia) |
+| F0 | Contenido en `content/projects.md` | ✅ **hecha** (contacto completo; experiencia añadida desde el CV) |
 | F1 | Portada ES/EN + estilos + favicon | ✅ **hecha** |
 | F2 | Diseño y responsive | ✅ **hecha** (Lighthouse: accesibilidad/SEO/buenas prácticas = 100 en los dos temas y los dos idiomas) |
 | F3 | Casos de estudio: una página por proyecto (ES/EN) con capturas reales | ✅ **hecha** |
+| R1 | Rediseño visual: estilo terminal / ingenieril (fuente autoalojada, tokens nuevos) | ✅ **hecha** |
+| R2 | «Sobre mí» descriptivo + secciones «Experiencia» y «Formación y certificaciones» (del CV) | ✅ **hecha** |
 | F4 | SEO (`og:image`), accesibilidad y Lighthouse de las páginas nuevas | ⏳ siguiente |
 | F5 | Publicación en GitHub Pages | ⏳ |
 | F6 | Extras: blog, GIFs de la app, CV descargable | ⏳ |
