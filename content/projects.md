@@ -138,17 +138,17 @@ De más reciente a más antiguo. Los tres puestos de Avanade se agrupan en una s
 - **Destacados ES:**
   - Cliente Android **offline-first**: escritura optimista, tabla `outbox` y `SyncWorker` con
     reintentos idempotentes.
-  - API **Spring Boot** con JWT (refresh rotativo), Flyway, `openapi.yaml` como contrato y tests
+  - API **Spring Boot** con JWT (refresh rotativo), `openapi.yaml` como contrato y tests
     de integración con Testcontainers.
   - **Algoritmo de liquidación** (exacto y heurístico) con el dinero siempre en enteros.
 - **Destacados EN:**
   - **Offline-first** Android client: optimistic writes, an `outbox` table and a `SyncWorker` with
     idempotent retries.
-  - **Spring Boot** API with JWT (rotating refresh), Flyway, `openapi.yaml` as the contract and
+  - **Spring Boot** API with JWT (rotating refresh), `openapi.yaml` as the contract and
     integration tests on Testcontainers.
   - **Settlement algorithm** (exact and heuristic) with money always kept as integers.
 - **Stack:** Kotlin · Jetpack Compose · Hilt · Room · WorkManager · Retrofit · Spring Boot ·
-  PostgreSQL · Flyway · OpenAPI · GitHub Actions
+  OpenAPI · GitHub Actions
 
 ### 3.2 TodoList
 

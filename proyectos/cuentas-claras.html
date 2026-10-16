@@ -19,7 +19,7 @@
   <meta property="og:url" content="https://maurospagnoli.github.io/proyectos/cuentas-claras.html">
 
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=9">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=10">
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -76,8 +76,6 @@
           <li class="pill">Room</li>
           <li class="pill">WorkManager</li>
           <li class="pill">Spring Boot</li>
-          <li class="pill">PostgreSQL</li>
-          <li class="pill">Flyway</li>
           <li class="pill">OpenAPI</li>
           <li class="pill">Testcontainers</li>
         </ul>
@@ -117,10 +115,9 @@
           </li>
           <li>
             La API es un servicio <strong>Spring Boot</strong> con JWT (token de acceso y
-            <em>refresh</em> rotativo), migraciones <strong>Flyway</strong> y
-            <strong>PostgreSQL</strong>. El contrato vive en un <span class="mono">openapi.yaml</span>
-            versionado en el repositorio, y los tests de integración levantan un PostgreSQL real con
-            <strong>Testcontainers</strong>.
+            <em>refresh</em> rotativo). El contrato vive en un <span class="mono">openapi.yaml</span>
+            versionado en el repositorio, y los tests de integración levantan una base de datos
+            real con <strong>Testcontainers</strong>.
           </li>
           <li>
             La pantalla de balances muestra el <strong>saldo neto</strong> de cada miembro y propone un

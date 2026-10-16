@@ -19,7 +19,7 @@
   <meta property="og:url" content="https://maurospagnoli.github.io/en/">
 
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=9">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=10">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -86,7 +86,7 @@
             <li class="pill">Kotlin</li>
             <li class="pill">Jetpack Compose</li>
             <li class="pill">Spring Boot</li>
-            <li class="pill">PostgreSQL</li>
+            <li class="pill">Java</li>
           </ul>
         </aside>
       </div>
@@ -107,7 +107,7 @@
             <p class="tagline">Shared-expenses app: groups, flexible splits, balances and settlement with the minimum number of transfers.</p>
             <ul>
               <li><strong>Offline-first</strong> Android client: optimistic writes, an <span class="mono">outbox</span> table and a <span class="mono">SyncWorker</span> with idempotent retries.</li>
-              <li><strong>Spring Boot</strong> API with JWT (rotating refresh), Flyway, <span class="mono">openapi.yaml</span> as the contract and tests on Testcontainers.</li>
+              <li><strong>Spring Boot</strong> API with JWT (rotating refresh), <span class="mono">openapi.yaml</span> as the contract and tests on Testcontainers.</li>
               <li><strong>Settlement algorithm</strong> (exact and heuristic) with money always kept as integers.</li>
             </ul>
             <ul class="stack-list">
@@ -117,7 +117,6 @@
               <li class="pill">Room</li>
               <li class="pill">WorkManager</li>
               <li class="pill">Spring Boot</li>
-              <li class="pill">PostgreSQL</li>
               <li class="pill">OpenAPI</li>
             </ul>
             <div class="spacer"></div>
@@ -170,9 +169,11 @@
               main developer of the Avales Santander project.
             </p>
             <p>
-              Over the years I have moved towards what my own projects are about: mobile and
-              services. At work I live in the .NET and Java ecosystems; in this portfolio I build
-              Android apps with Kotlin and Jetpack Compose and APIs with Spring Boot.
+              Today I work in online payments: Android (Kotlin · Compose · Hilt · Room ·
+              WorkManager) and Java. Before that, .NET, SQL Server and Windows Server
+              at Avanade (2018–2022), electronic signature (Avanade) and Angular at Educabily
+              (2022). In this portfolio I build Android apps with Kotlin and Jetpack Compose and
+              APIs with Spring Boot.
             </p>
             <p class="muted">
               I care about problems where correctness matters —money, permissions,
@@ -180,53 +181,47 @@
               writing code I design: scope, data model and API contract.
             </p>
           </div>
-          <div class="skills">
-            <div>
-              <h3>Mobile</h3>
-              <ul class="stack-list">
-                <li class="pill">Kotlin</li>
-                <li class="pill">Jetpack Compose</li>
-                <li class="pill">Hilt</li>
-                <li class="pill">Room</li>
-                <li class="pill">WorkManager</li>
-              </ul>
+          <div class="skills skill-bars">
+            <h3 class="skill-bars__caption">Current work (payments)</h3>
+            <div class="skill-bars__rows">
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">Kotlin</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">Jetpack Compose</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">Hilt</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">Room · SQLite</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">WorkManager</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">Flow · Coroutines</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">Java</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
             </div>
-            <div>
-              <h3>Backend</h3>
-              <ul class="stack-list">
-                <li class="pill">Spring Boot</li>
-                <li class="pill">PostgreSQL</li>
-                <li class="pill">JWT</li>
-                <li class="pill">Flyway</li>
-              </ul>
+            <h3>Previous work</h3>
+            <div class="skill-bars__rows">
+              <div class="skill-bars__row" style="--w:100"><span class="skill-bars__name">C# · .NET</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">4y</span></div>
+              <div class="skill-bars__row" style="--w:100"><span class="skill-bars__name">SQL Server</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">4y</span></div>
+              <div class="skill-bars__row" style="--w:75"><span class="skill-bars__name">Windows Server</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">3y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">JWT · Identity</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:25"><span class="skill-bars__name">Angular</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">1y</span></div>
             </div>
-            <div>
-              <h3>Quality</h3>
-              <ul class="stack-list">
-                <li class="pill">JUnit · MockK</li>
-                <li class="pill">Robolectric</li>
-                <li class="pill">Testcontainers</li>
-                <li class="pill">Detekt · Lint</li>
-                <li class="pill">GitHub Actions</li>
-              </ul>
+            <h3>Side projects</h3>
+            <div class="skill-bars__rows">
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">Spring Boot</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">OpenAPI</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">Testcontainers</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">GitHub Actions</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">JUnit · MockK</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">Robolectric</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+              <div class="skill-bars__row" style="--w:50"><span class="skill-bars__name">Detekt · Lint</span><span class="skill-bars__track"><span class="skill-bars__fill"></span></span><span class="skill-bars__lvl">2y</span></div>
+
             </div>
-            <div>
-              <h3>Work</h3>
-              <ul class="stack-list">
-                <li class="pill">C# · .NET</li>
-                <li class="pill">Java</li>
-                <li class="pill">SQL Server</li>
-                <li class="pill">Angular</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Languages</h3>
-              <ul class="stack-list">
-                <li class="pill">Spanish · native</li>
-                <li class="pill">Italian · native</li>
-                <li class="pill">English · B2</li>
-              </ul>
-            </div>
+            <h3>Languages</h3>
+            <ul class="stack-list">
+              <li class="pill">Spanish · native</li>
+              <li class="pill">Italian · native</li>
+              <li class="pill">English · B2</li>
+            </ul>
+            <p class="skill-bars__legend">
+              Each bar = one year of use. The graph maxes at 4 (C# · .NET and SQL Server during my
+              time at Avanade). I have used Git since 2018 and hold the AZ-900 (Azure) from 2025,
+              which is why they do not show up as bars.
+            </p>
           </div>
         </div>
       </div>

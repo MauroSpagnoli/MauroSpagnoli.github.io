@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    Portfolio · estilos compartidos (sitio estático, sin build)
    Fuente única para ES (raíz) y EN (/en/).
    Dirección visual: terminal / ingenieril.
@@ -612,8 +612,60 @@ section {
   list-style: none;
 }
 
+/* ---------- Gráfico de stack: barras por años ---------- */
+  .skill-bars { display: grid; gap: 2px; }
+  .skill-bars__rows { display: grid; gap: 2px; }
+  .skill-bars__row {
+    display: grid;
+    grid-template-columns: minmax(7rem, auto) minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    padding: 2px 0;
+  }
+  .skill-bars__name {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .skill-bars__track {
+    position: relative;
+    height: 0.72rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .skill-bars__fill {
+    display: block;
+    height: 100%;
+    width: calc(var(--w) * 1%);
+    background: var(--accent);
+  }
+  .skill-bars__lvl {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .skill-bars__caption {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin: 6px 0 4px;
+  }
+  .skill-bars__legend {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
 .contact {
   text-align: center;
+  }
+
 }
 
 .contact .hero-actions {
