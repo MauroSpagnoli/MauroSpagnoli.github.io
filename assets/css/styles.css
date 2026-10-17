@@ -757,7 +757,7 @@ section {
 }
 
 .case-head {
-  max-width: 64ch;
+  max-width: none;
 }
 
 .case-head .kind {
@@ -786,7 +786,7 @@ section {
 .case-section ul,
 .case-section ol,
 .case-section dl {
-  max-width: 68ch;
+  max-width: none;
 }
 
 .case-section li {
